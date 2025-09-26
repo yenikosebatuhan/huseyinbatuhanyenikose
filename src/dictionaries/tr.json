@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "projects": "Projeler",
+    "resume": "Özgeçmiş",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "title": "Hüseyin Batuhan YENİKÖSE",
+    "subtitle": "Bilgisayar Mühendisliği Öğrencisi · Test Mühendisi Stajyer · UAV & QA Projeleri",
+    "description": "Yazılım testleri, otonom sistemler ve yapay zeka inovasyonu konusunda tutkulu. Şu anda Tegsoft'ta Test Mühendisi Stajyeri olarak yenilikçi çözümlere katkı sağlıyorum."
+  },
+  "stats": {
+    "gpa": "GPA",
+    "tubitak": "TÜBİTAK 2204-A 3. Sıra",
+    "patents": "Patent",
+    "projects": "Proje"
+  },
+  "common": {
+    "viewCv": "CV Görüntüle",
+    "emailMe": "E-posta Gönder",
+    "viewAll": "Tümünü Görüntüle",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "download": "İndir",
+    "readMore": "Devamını Oku",
+    "back": "Geri"
+  },
+  "projects": {
+    "featured": "Öne Çıkan Projeler",
+    "all": "Tüm Projeler",
+    "domains": {
+      "uav": "UAV",
+      "qa": "QA",
+      "ai": "YZ",
+      "web": "Web",
+      "game": "Oyun",
+      "medical": "Tıbbi"
+    }
+  },
+  "about": {
+    "biography": "Biyografi",
+    "experience": "Deneyim",
+    "education": "Eğitim"
+  },
+  "contact": {
+    "title": "İletişime Geçin",
+    "description": "Sonraki projeniz veya fırsatınız hakkında konuşalım"
+  },
+  "footer": {
+    "copyright": "© 2025 Hüseyin Batuhan YENİKÖSE"
+  }
+}
+
