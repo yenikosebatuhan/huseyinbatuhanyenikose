@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
+// Detect GitHub Pages environment to set basePath/assetPrefix
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const repoName = "huseyinbatuhanyenikose"; // update if repo changes
+
 const nextConfig: NextConfig = {
   // Configure MDX
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
@@ -8,6 +12,9 @@ const nextConfig: NextConfig = {
   // Static export for GitHub Pages
   output: "export",
   trailingSlash: true,
+  // Configure basePath/assetPrefix only for GitHub Pages project sites
+  basePath: isGitHubPages ? `/${repoName}` : undefined,
+  assetPrefix: isGitHubPages ? `/${repoName}/` : undefined,
   images: {
     unoptimized: true,
   },
