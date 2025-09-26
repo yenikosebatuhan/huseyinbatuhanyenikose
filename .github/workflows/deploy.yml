@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout
@@ -24,6 +26,8 @@ jobs:
       run: npm ci
       
     - name: Build
+      env:
+        GITHUB_PAGES: true
       run: npm run build
       
     - name: Deploy to GitHub Pages
