@@ -1,6 +1,6 @@
 self.__BUILD_MANIFEST = {
   "/_error": [
-    "./static/chunks/510fcb052fa632ee.js"
+    "./static/chunks/d1f8a3966a5eaabf.js"
   ],
   "__rewrites": {
     "afterFiles": [],
