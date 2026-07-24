@@ -18,6 +18,7 @@ import {
 import { getLocaleFromPathname } from '@/lib/i18n';
 import { projects, localizedTitle, localizedSummary } from '@/data/projects';
 import { ProjectCover } from '@/components/ProjectCover';
+import { asset } from '@/lib/asset';
 
 const TECH = [
   'Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'Kubernetes', 'REST',
@@ -111,7 +112,7 @@ export default function HomePage() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
-                  href="/resume.pdf"
+                  href={asset('/resume.pdf')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium hover:border-foreground/30 transition-colors"
@@ -145,7 +146,7 @@ export default function HomePage() {
               <div className="relative">
                 <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[var(--brand)] to-[var(--brand-2)] opacity-20 blur-xl" />
                 <img
-                  src="/images/profile.jpeg"
+                  src={asset('/images/profile.jpeg')}
                   alt="Hüseyin Batuhan Yeniköse"
                   className="relative h-48 w-48 md:h-56 md:w-56 rounded-2xl object-cover border border-border shadow-xl"
                 />

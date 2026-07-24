@@ -4,6 +4,7 @@ import createMDX from "@next/mdx";
 // Detect GitHub Pages environment to set basePath/assetPrefix
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const repoName = "huseyinbatuhanyenikose"; // update if repo changes
+const basePath = isGitHubPages ? `/${repoName}` : "";
 
 const nextConfig: NextConfig = {
   // Configure MDX
@@ -13,8 +14,12 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   // Configure basePath/assetPrefix only for GitHub Pages project sites
-  basePath: isGitHubPages ? `/${repoName}` : undefined,
+  basePath: basePath || undefined,
   assetPrefix: isGitHubPages ? `/${repoName}/` : undefined,
+  // Exposed to the client so raw <img>/<a> to /public assets can be prefixed
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     unoptimized: true,
   },

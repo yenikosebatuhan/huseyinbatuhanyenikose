@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Download, ExternalLink } from 'lucide-react';
 import { getLocaleFromPathname } from '@/lib/i18n';
+import { asset } from '@/lib/asset';
 
 export default function ResumePage() {
   const pathname = usePathname();
@@ -43,7 +44,7 @@ export default function ResumePage() {
         </div>
         <div className="flex gap-3">
           <a
-            href="/resume.pdf"
+            href={asset('/resume.pdf')}
             download
             className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-background hover:opacity-90 transition-opacity"
           >
@@ -51,7 +52,7 @@ export default function ResumePage() {
             {tr ? 'İndir' : 'Download'}
           </a>
           <a
-            href="/resume.pdf"
+            href={asset('/resume.pdf')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:border-foreground/30 transition-colors"
@@ -75,7 +76,7 @@ export default function ResumePage() {
       {/* PDF preview */}
       <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
         <object
-          data="/resume.pdf#view=FitH"
+          data={`${asset('/resume.pdf')}#view=FitH`}
           type="application/pdf"
           className="h-[80vh] w-full"
         >
@@ -83,7 +84,7 @@ export default function ResumePage() {
             {tr
               ? 'PDF önizleme tarayıcınızda gösterilemiyor. '
               : 'PDF preview is not available in your browser. '}
-            <a href="/resume.pdf" className="text-[var(--brand)] underline" download>
+            <a href={asset('/resume.pdf')} className="text-[var(--brand)] underline" download>
               {tr ? 'İndirmek için tıklayın.' : 'Click to download.'}
             </a>
           </div>
