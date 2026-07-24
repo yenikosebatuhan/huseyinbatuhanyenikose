@@ -1,23 +1,23 @@
-# Hüseyin Batuhan YENİKÖSE - Portfolio
+# Hüseyin Batuhan Yeniköse — Portfolio
 
-A sleek, professional bilingual portfolio website showcasing my work in software testing, UAV systems, AI projects, and web development.
+A bilingual (EN/TR) portfolio focused on backend software engineering — Java / Spring Boot
+microservices, distributed systems, and test automation — alongside full-stack, systems, and
+UAV work. Live at **https://yenikosebatuhan.github.io/huseyinbatuhanyenikose/**.
 
 ## 🚀 Features
 
-- **Bilingual Support**: English and Turkish language switching
-- **Modern Design**: Clean, responsive design with dark/light theme support
-- **Project Showcase**: Detailed project pages with MDX content
-- **Interactive Timeline**: Professional experience and education timeline
-- **Contact Integration**: Direct contact forms and social media links
-- **GitHub Pages Ready**: Optimized for static hosting
+- **Bilingual**: English / Turkish language switching
+- **Modern design**: responsive, with dark / light themes
+- **Project showcase**: filterable grid with a detail view and links to source
+- **Résumé**: embedded, downloadable ATS-friendly PDF
+- **GitHub Pages ready**: fully static export
 
 ## 🛠️ Technology Stack
 
-- **Framework**: Next.js 14 with App Router
+- **Framework**: Next.js 15 (App Router, static export)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Content**: MDX for project pages
+- **Styling**: Tailwind CSS v4
+- **UI**: shadcn/ui + Lucide icons
 - **Icons**: Lucide React
 - **Animations**: Framer Motion
 - **Deployment**: GitHub Pages

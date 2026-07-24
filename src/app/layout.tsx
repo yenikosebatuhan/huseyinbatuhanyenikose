@@ -5,8 +5,8 @@ import "./globals.css";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { Navigation } from "@/components/Navigation";
-import { getDictionary, getLocaleFromPathname, Locale } from "@/lib/i18n";
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Logo } from "@/components/Logo";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,33 +19,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hüseyin Batuhan YENİKÖSE - Portfolio",
-  description: "Computer Engineering Student, Test Engineer Intern, UAV & QA Projects",
+  title: "Hüseyin Batuhan Yeniköse — Backend & Software Engineer",
+  description:
+    "Computer Engineering student focused on backend software engineering — Java / Spring Boot microservices, distributed systems, and test automation.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // For static export, we need to handle this differently
-  // We'll default to English for the layout
-  const dict = await getDictionary('en');
-
   return (
     <html lang="en" className="h-full">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-background text-foreground`}
       >
-        <div className="min-h-screen">
-          <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-200/60 dark:border-gray-700/60">
-            <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-              <Link href="/" className="font-bold text-xl text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                Hüseyin Batuhan YENİKÖSE
+        <div className="min-h-screen flex flex-col">
+          <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/70 backdrop-blur-xl">
+            <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+              <Link
+                href="/"
+                className="group flex items-center gap-2.5 font-semibold tracking-tight"
+              >
+                <Logo size={34} className="transition-transform group-hover:scale-105" />
+                <span className="hidden sm:inline text-[15px]">
+                  Batuhan Yeniköse
+                </span>
               </Link>
-              <div className="flex items-center gap-8">
+
+              <div className="flex items-center gap-6">
                 <Navigation className="hidden md:flex" />
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1.5">
                   <LanguageSwitch />
                   <ThemeToggle />
                 </div>
@@ -53,15 +57,40 @@ export default async function RootLayout({
             </div>
           </header>
 
-          <main className="pt-20">
-            {children}
-          </main>
+          <main className="flex-1 pt-16">{children}</main>
 
-          <footer className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 py-12">
-            <div className="container mx-auto px-6 text-center">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                © 2025 Hüseyin Batuhan YENİKÖSE · <a href="https://github.com/yenikosebatuhan" className="hover:underline hover:text-blue-600 dark:hover:text-blue-400">GitHub</a> · <a href="https://linkedin.com/in/huseyinbatuhanyenikose" className="hover:underline hover:text-blue-600 dark:hover:text-blue-400">LinkedIn</a> · <a href="mailto:byenikose@gmail.com" className="hover:underline hover:text-red-600 dark:hover:text-red-400">Email</a>
+          <footer className="border-t border-border">
+            <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} Hüseyin Batuhan Yeniköse
               </p>
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://github.com/yenikosebatuhan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="grid h-9 w-9 place-items-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+                >
+                  <Github className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/huseyinbatuhanyenikose"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="grid h-9 w-9 place-items-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a
+                  href="mailto:hyenikose22@ku.edu.tr"
+                  aria-label="Email"
+                  className="grid h-9 w-9 place-items-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                </a>
+              </div>
             </div>
           </footer>
         </div>

@@ -2,129 +2,95 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Mail, Github, Linkedin, MapPin } from 'lucide-react';
-import { getDictionary, getLocaleFromPathname, Dictionary } from '@/lib/i18n';
+import { Mail, Github, Linkedin, MapPin, ArrowUpRight } from 'lucide-react';
+import { getLocaleFromPathname } from '@/lib/i18n';
 
 export default function ContactPage() {
-  const [dict, setDict] = useState<Dictionary | null>(null);
   const pathname = usePathname();
+  const [locale, setLocale] = useState<'en' | 'tr'>('en');
 
   useEffect(() => {
-    const loadDictionary = async () => {
-      const currentLocale = getLocaleFromPathname(pathname);
-      try {
-        const newDict = await getDictionary(currentLocale);
-        setDict(newDict);
-      } catch (error) {
-        console.error('Failed to load dictionary:', error);
-        const fallbackDict = await getDictionary('en');
-        setDict(fallbackDict);
-      }
-    };
-
-    loadDictionary();
-
-    const handleLanguageChange = () => {
-      loadDictionary();
-    };
-
-    window.addEventListener('languageChanged', handleLanguageChange);
-    
-    return () => {
-      window.removeEventListener('languageChanged', handleLanguageChange);
-    };
+    const sync = () => setLocale(getLocaleFromPathname(pathname));
+    sync();
+    window.addEventListener('languageChanged', sync);
+    return () => window.removeEventListener('languageChanged', sync);
   }, [pathname]);
 
-  if (!dict) {
-    return <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
-      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-    </div>;
-  }
+  const tr = locale === 'tr';
 
-  const currentLocale = getLocaleFromPathname(pathname);
+  const links = [
+    {
+      icon: Mail,
+      label: 'Email',
+      value: 'hyenikose22@ku.edu.tr',
+      href: 'mailto:hyenikose22@ku.edu.tr',
+    },
+    {
+      icon: Linkedin,
+      label: 'LinkedIn',
+      value: '/in/huseyinbatuhanyenikose',
+      href: 'https://linkedin.com/in/huseyinbatuhanyenikose',
+    },
+    {
+      icon: Github,
+      label: 'GitHub',
+      value: '/yenikosebatuhan',
+      href: 'https://github.com/yenikosebatuhan',
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black py-24 px-6">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-5xl font-light mb-8 text-black dark:text-white">
-            {currentLocale === 'tr' ? 'İletişim' : 'Contact'}
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            {currentLocale === 'tr' ? 'Fırsatlar, projeler veya işbirlikleri hakkında konuşalım.' : 'Let\'s discuss opportunities, projects, or collaborations.'}
-          </p>
+    <div className="relative min-h-[80vh]">
+      <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_60%)]" />
+      <div className="relative mx-auto max-w-3xl px-6 py-20 md:py-28 text-center">
+        <div className="mono inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
+          <span className="h-2 w-2 rounded-full bg-emerald-500" />
+          {tr ? 'Yeni projeler için müsait' : 'Available for new projects'}
         </div>
 
-        {/* Contact Information */}
-        <div className="max-w-2xl mx-auto space-y-12">
-          <div className="text-center">
-            <Button asChild variant="outline" size="lg" className="text-base px-8 py-3 border-2">
-              <a href="mailto:byenikose@gmail.com">
-                <Mail className="mr-2 h-5 w-5" />
-                byenikose@gmail.com
-              </a>
-            </Button>
-          </div>
+        <h1 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight">
+          {tr ? 'İletişime Geçelim' : 'Let’s Connect'}
+        </h1>
+        <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground leading-relaxed">
+          {tr
+            ? 'Backend, full-stack ve test otomasyonu alanlarında staj, tam zamanlı pozisyon ve işbirliği fırsatlarına açığım. En hızlı ulaşım e-posta.'
+            : 'Open to internships, full-time roles, and collaborations in backend, full-stack, and test automation. Email is the fastest way to reach me.'}
+        </p>
 
-          {/* Social Links */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <a 
-              href="https://linkedin.com/in/huseyinbatuhanyenikose"
-              target="_blank"
+        <a
+          href="mailto:hyenikose22@ku.edu.tr"
+          className="mt-8 inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 text-sm font-semibold text-background hover:opacity-90 transition-opacity"
+        >
+          <Mail className="h-4 w-4" />
+          hyenikose22@ku.edu.tr
+        </a>
+
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {links.map(({ icon: Icon, label, value, href }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith('http') ? '_blank' : undefined}
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 transition-colors"
+              className="lift group flex flex-col items-start gap-3 rounded-2xl border border-border bg-card p-5 text-left hover:border-foreground/20"
             >
-              <Linkedin className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+              <div className="flex w-full items-center justify-between">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-secondary">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+              </div>
               <div>
-                <h3 className="font-medium text-black dark:text-white">LinkedIn</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {currentLocale === 'tr' ? 'Profesyonel profil' : 'Professional profile'}
-                </p>
+                <div className="font-medium">{label}</div>
+                <div className="mono text-xs text-muted-foreground break-all">{value}</div>
               </div>
             </a>
+          ))}
+        </div>
 
-            <a 
-              href="https://github.com/yenikosebatuhan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 transition-colors"
-            >
-              <Github className="h-6 w-6 text-gray-600 dark:text-gray-400" />
-              <div>
-                <h3 className="font-medium text-black dark:text-white">GitHub</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {currentLocale === 'tr' ? 'Kod depoları' : 'Code repositories'}
-                </p>
-              </div>
-            </a>
-          </div>
-
-          {/* Location */}
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-2 text-gray-600 dark:text-gray-400">
-              <MapPin className="h-5 w-5" />
-              <span>{currentLocale === 'tr' ? 'İstanbul, Türkiye' : 'Istanbul, Turkey'}</span>
-            </div>
-          </div>
-
-          {/* Availability */}
-          <div className="text-center bg-gray-50 dark:bg-gray-900 rounded-lg p-8">
-            <h3 className="text-lg font-medium text-black dark:text-white mb-4">
-              {currentLocale === 'tr' ? 'Mevcut Durum' : 'Current Status'}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              {currentLocale === 'tr' 
-                ? 'Yazılım testleri, UAV sistemleri ve AI projelerinde freelance fırsatları, araştırma işbirlikleri ve tam zamanlı pozisyonlara açığım.'
-                : 'Open to freelance opportunities, research collaborations, and full-time positions in software testing, UAV systems, and AI projects.'
-              }
-            </p>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 rounded-full text-sm">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              {currentLocale === 'tr' ? 'Yeni projeler için müsait' : 'Available for new projects'}
-            </div>
-          </div>
+        <div className="mt-10 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <MapPin className="h-4 w-4" />
+          {tr ? 'İstanbul, Türkiye' : 'Istanbul, Turkey'}
         </div>
       </div>
     </div>
