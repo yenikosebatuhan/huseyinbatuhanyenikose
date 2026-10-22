@@ -20,10 +20,10 @@ const EXPERIENCE: Role[] = [
     org: 'Siemens',
     title: 'Part-Time Student Engineer — Test Automation',
     title_tr: 'Part-Time Öğrenci Mühendis — Test Otomasyonu',
-    period: 'Feb 2026 – Present',
-    period_tr: 'Şub 2026 – Halen',
-    desc: 'Develop and maintain automated test frameworks for enterprise applications, design and run automated test cases, and support CI/CD pipelines with developer, QA and DevOps teams.',
-    desc_tr: 'Kurumsal uygulamalar için otomatik test çerçeveleri geliştirip sürdürüyorum, otomatik test senaryoları tasarlayıp çalıştırıyorum ve geliştirici, QA ve DevOps ekipleriyle CI/CD hatlarını destekliyorum.',
+    period: 'Feb 2026 – Sep 2026',
+    period_tr: 'Şub 2026 – Eyl 2026',
+    desc: 'Contributed to automated test development and maintenance for enterprise software using Java and test tooling; designed and ran functional and regression tests with developers and QA; worked with API testing, Git, CI/CD and containerized environments.',
+    desc_tr: 'Kurumsal yazılım için Java ve test araçlarıyla otomatik test geliştirme ve bakımına katkı sağladım; geliştirici ve QA ekipleriyle fonksiyonel ve regresyon testleri tasarlayıp yürüttüm; API testi, Git, CI/CD ve konteyner ortamlarıyla çalıştım.',
   },
   {
     org: 'Tegsoft',
@@ -31,8 +31,8 @@ const EXPERIENCE: Role[] = [
     title_tr: 'QA Stajyeri — Test Mühendisliği',
     period: 'Jul 2025 – Oct 2025',
     period_tr: 'Tem 2025 – Eki 2025',
-    desc: 'Wrote and maintained manual & automated test cases for call-center / omnichannel software; functional, regression and exploratory testing with BrowserStack; defect tracking with developers.',
-    desc_tr: 'Çağrı merkezi / omnichannel yazılımı için manuel ve otomatik test senaryoları yazdım; BrowserStack ile fonksiyonel, regresyon ve keşifsel testler yaptım; geliştiricilerle hata takibi yürüttüm.',
+    desc: 'Executed manual, functional, regression and exploratory tests for web-based omnichannel software; cross-browser/device checks with BrowserStack; reported defects and documented test results.',
+    desc_tr: 'Web tabanlı omnichannel yazılım için manuel, fonksiyonel, regresyon ve keşifsel testler yürüttüm; BrowserStack ile tarayıcı/cihaz kontrolleri yaptım; hataları raporlayıp test sonuçlarını belgeledim.',
   },
   {
     org: 'KUAV — Koç University',
@@ -56,24 +56,34 @@ const EXPERIENCE: Role[] = [
 
 const SKILLS: { title: string; title_tr: string; items: string[] }[] = [
   {
-    title: 'Backend',
-    title_tr: 'Backend',
-    items: ['Java 21', 'Spring Boot', 'REST APIs', 'JWT / RBAC', 'JPA / Hibernate', 'PostgreSQL / SQL'],
+    title: 'AI / Data',
+    title_tr: 'AI / Veri',
+    items: ['Azure Document Intelligence', 'Document Extraction', 'Regex / Rule-based Parsing', 'Game AI'],
   },
   {
-    title: 'DevOps & Tooling',
-    title_tr: 'DevOps & Araçlar',
-    items: ['Docker', 'Kubernetes', 'CI/CD (GitHub Actions)', 'Git', 'Flyway'],
+    title: 'Backend',
+    title_tr: 'Backend',
+    items: ['FastAPI', 'Spring Boot', 'REST APIs', 'JWT / RBAC', 'PostgreSQL / SQL', 'Redis RQ'],
+  },
+  {
+    title: 'Infrastructure',
+    title_tr: 'Altyapı',
+    items: ['Docker', 'Kubernetes', 'GitHub Actions CI/CD', 'Git'],
+  },
+  {
+    title: 'Web / Mobile',
+    title_tr: 'Web / Mobil',
+    items: ['React', 'Next.js', 'TypeScript', 'Flutter (Dart)', 'Prisma ORM'],
   },
   {
     title: 'Languages',
     title_tr: 'Diller',
-    items: ['Java', 'Python', 'C', 'TypeScript / JavaScript', 'Dart (Flutter)'],
+    items: ['Python', 'Java', 'TypeScript', 'C'],
   },
   {
     title: 'Testing & QA',
     title_tr: 'Test & QA',
-    items: ['Test Automation', 'Regression & Functional', 'Testcontainers', 'JUnit', 'BrowserStack', 'Postman'],
+    items: ['Test Automation', 'API Testing', 'Regression & Functional', 'Testcontainers', 'JUnit', 'BrowserStack', 'Postman', 'JIRA'],
   },
 ];
 
@@ -129,13 +139,13 @@ export default function AboutPage() {
       <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
         <p>
           {tr
-            ? 'Koç Üniversitesi’nde Bilgisayar Mühendisliği öğrencisiyim; backend yazılım mühendisliği ve test otomasyonuna odaklanıyorum. Baskı altında doğru çalışan sistemler kurmayı seviyorum — temiz servis sınırları, ondalık-güvenli para, idempotent operasyonlar ve gerçekten regresyon yakalayan testler.'
-            : 'I’m a Computer Engineering student at Koç University, focused on backend software engineering and test automation. I like building systems that stay correct under pressure — clean service boundaries, decimal-safe money, idempotent operations, and tests that actually catch regressions.'}
+            ? 'Koç Üniversitesi’nde Bilgisayar Mühendisliği öğrencisiyim; backend API’ler, uygulamalı AI ve yazılım otomasyonu üzerine çalışıyorum. FastAPI ve Azure Document Intelligence ile AI destekli bir belge işleme MVP’si geliştirdim; Java / Spring Boot mikroservisleri yazdım ve bağımsız bir Flutter oyunu yayınladım. Baskı altında doğru çalışan sistemler kurmayı seviyorum — temiz servis sınırları, idempotent operasyonlar ve gerçekten regresyon yakalayan testler.'
+            : 'I’m a Computer Engineering student at Koç University working on backend APIs, applied AI and software automation. I built an AI-assisted document-processing MVP with FastAPI and Azure Document Intelligence, developed Java / Spring Boot microservices, and published an independent Flutter game. I like systems that stay correct under pressure — clean service boundaries, idempotent operations, and tests that actually catch regressions.'}
         </p>
         <p>
           {tr
-            ? 'Şu anda Siemens’te test otomasyonu alanında part-time mühendisim; öncesinde Tegsoft’ta QA stajyeriydim. Daha önce KUAV’ın Teknofest Savaş İHA takımına liderlik ettim ve AI & Robotik topluluğunun başkan yardımcılığını yaptım. Bu süreçte iki patentli cihazın ortak mucidi oldum ve TÜBİTAK’ta Türkiye 3.’lüğü kazandım.'
-            : 'Currently I’m a part-time engineer in test automation at Siemens; before that I was a QA intern at Tegsoft. Earlier I led KUAV’s Teknofest Combat UAV team and served as vice president of the AI & Robotics society. Along the way I co-invented two patented devices and placed 3rd nationally at TÜBİTAK.'}
+            ? 'Siemens’te test otomasyonu alanında part-time öğrenci mühendis olarak çalıştım; öncesinde Tegsoft’ta QA stajyeriydim. KUAV’ın Teknofest Savaş İHA takımına kaptanlık yaptım ve AI & Robotik topluluğunun başkan yardımcılığını üstlendim. Bu süreçte iki patentli cihazın ortak mucidi oldum ve TÜBİTAK’ta Türkiye 3.’lüğü kazandım. Şimdi junior AI mühendisliği, uygulamalı AI ve backend fırsatları arıyorum.'
+            : 'I worked as a part-time student engineer in test automation at Siemens, and before that as a QA intern at Tegsoft. I captained KUAV’s Teknofest Combat UAV team and served as vice president of the AI & Robotics society. Along the way I co-invented two patented devices and placed 3rd nationally at TÜBİTAK. I’m now looking for junior AI engineering, applied AI and backend roles.'}
         </p>
       </div>
 

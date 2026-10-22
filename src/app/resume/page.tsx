@@ -18,10 +18,17 @@ export default function ResumePage() {
   }, [pathname]);
 
   const tr = locale === 'tr';
+  const [version, setVersion] = useState<'se' | 'ai'>('se');
+
+  const versions = {
+    se: { file: '/resume.pdf', label: tr ? 'Yazılım Mühendisliği' : 'Software Engineering' },
+    ai: { file: '/resume-ai-backend.pdf', label: tr ? 'AI & Backend' : 'AI & Backend' },
+  } as const;
+  const pdf = asset(versions[version].file);
 
   const stats = [
-    { value: '3+', label: tr ? 'Yıl Deneyim' : 'Years Experience' },
-    { value: '8+', label: tr ? 'Proje' : 'Projects' },
+    { value: '2', label: tr ? 'Sektör Deneyimi' : 'Industry Roles' },
+    { value: '10+', label: tr ? 'Proje' : 'Projects' },
     { value: '2', label: tr ? 'Patent' : 'Patents' },
   ];
 
@@ -38,13 +45,13 @@ export default function ResumePage() {
           </h1>
           <p className="mt-3 max-w-xl text-muted-foreground">
             {tr
-              ? 'Deneyim, eğitim ve yeteneklerimin tek sayfalık, ATS-uyumlu özeti.'
-              : 'A one-page, ATS-friendly summary of my experience, education, and skills.'}
+              ? 'Deneyim, eğitim ve yeteneklerimin tek sayfalık, ATS-uyumlu özeti — rolüne göre iki versiyon.'
+              : 'A one-page, ATS-friendly summary of my experience, education, and skills — in two role-specific versions.'}
           </p>
         </div>
         <div className="flex gap-3">
           <a
-            href={asset('/resume.pdf')}
+            href={pdf}
             download
             className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-background hover:opacity-90 transition-opacity"
           >
@@ -52,7 +59,7 @@ export default function ResumePage() {
             {tr ? 'İndir' : 'Download'}
           </a>
           <a
-            href={asset('/resume.pdf')}
+            href={pdf}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium hover:border-foreground/30 transition-colors"
@@ -73,10 +80,28 @@ export default function ResumePage() {
         ))}
       </div>
 
+      {/* Version switch */}
+      <div className="mt-8 inline-flex rounded-full border border-border bg-card p-1">
+        {(Object.keys(versions) as (keyof typeof versions)[]).map((v) => (
+          <button
+            key={v}
+            onClick={() => setVersion(v)}
+            className={`rounded-full px-4 py-1.5 text-sm transition-colors ${
+              version === v
+                ? 'bg-foreground text-background'
+                : 'text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            {versions[v].label}
+          </button>
+        ))}
+      </div>
+
       {/* PDF preview */}
-      <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
+      <div className="mt-4 overflow-hidden rounded-2xl border border-border bg-card">
         <object
-          data={`${asset('/resume.pdf')}#view=FitH`}
+          key={pdf}
+          data={`${pdf}#view=FitH`}
           type="application/pdf"
           className="h-[80vh] w-full"
         >
@@ -84,7 +109,7 @@ export default function ResumePage() {
             {tr
               ? 'PDF önizleme tarayıcınızda gösterilemiyor. '
               : 'PDF preview is not available in your browser. '}
-            <a href={asset('/resume.pdf')} className="text-[var(--brand)] underline" download>
+            <a href={pdf} className="text-[var(--brand)] underline" download>
               {tr ? 'İndirmek için tıklayın.' : 'Click to download.'}
             </a>
           </div>

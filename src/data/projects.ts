@@ -40,7 +40,7 @@ export const projects: ProjectItem[] = [
     slug: 'chargesquare',
     title: 'ChargeSquare — EV-Charging Backend',
     title_tr: 'ChargeSquare — EV Şarj Backend',
-    period: '2025',
+    period: 'Jul 2026',
     domains: ['backend'],
     stack: ['Java 21', 'Spring Boot', 'PostgreSQL', 'Docker', 'Kubernetes', 'React'],
     summary:
@@ -57,6 +57,46 @@ export const projects: ProjectItem[] = [
     monogram: 'CS',
   },
   {
+    slug: 'ai-document-processing',
+    title: 'AI Document Processing MVP',
+    title_tr: 'AI Belge İşleme MVP',
+    period: '2026',
+    domains: ['ai', 'backend'],
+    stack: ['Python', 'FastAPI', 'Azure Document Intelligence', 'Redis RQ', 'PostgreSQL', 'Docker'],
+    summary:
+      'A document-processing MVP: FastAPI backend, queued background extraction jobs, and Azure Document Intelligence combined with rule-based parsing for structured data.',
+    summary_tr:
+      'Bir belge işleme MVP’si: FastAPI backend, kuyruklu arka plan çıkarım işleri ve yapılandırılmış veri için kural tabanlı ayrıştırmayla birleştirilen Azure Document Intelligence.',
+    content:
+      'An AI-assisted document-processing MVP built end to end on the backend side. Documents are uploaded through a FastAPI API, handed off to Redis RQ background workers so requests stay fast, and the results are persisted in PostgreSQL.\n\nExtraction combines Azure Document Intelligence with rule-based / regex post-processing, turning OCR and layout output into clean, structured fields. The whole stack — API, workers, Redis and the database — runs in Docker for a reproducible local setup.',
+    content_tr:
+      'Backend tarafı uçtan uca geliştirilmiş, AI destekli bir belge işleme MVP’si. Belgeler bir FastAPI API’si üzerinden yüklenir, isteklerin hızlı kalması için Redis RQ arka plan işçilerine devredilir ve sonuçlar PostgreSQL’de saklanır.\n\nÇıkarım, Azure Document Intelligence’ı kural tabanlı / regex son işlemeyle birleştirerek OCR ve yerleşim çıktısını temiz, yapılandırılmış alanlara dönüştürür. API, işçiler, Redis ve veritabanından oluşan tüm yapı, tekrarlanabilir bir yerel kurulum için Docker’da çalışır.',
+    weight: 98,
+    featured: true,
+    monogram: 'AI',
+  },
+  {
+    slug: 'vivideo-automations',
+    title: 'Vivideo Automations — Workflow Case Study',
+    title_tr: 'Vivideo Automations — İş Akışı Vaka Çalışması',
+    period: '2026',
+    domains: ['web'],
+    stack: ['React', 'TypeScript', 'Zustand', 'Vitest'],
+    summary:
+      'A deployed workflow-automation prototype with a rule-based planner, scheduling, run history, credit accounting and a real execution state machine.',
+    summary_tr:
+      'Kural tabanlı planlayıcı, zamanlama, çalıştırma geçmişi, kredi muhasebesi ve gerçek bir yürütme durum makinesine sahip, yayında bir iş akışı otomasyonu prototipi.',
+    content:
+      'An Automations page for a video-generation product: build a pipeline once (trigger → generation steps → destinations → schedule) and watch it run, fail, skip and spend credits on its own. Nothing is actually generated or published — but state, validation, plan limits, the credit ledger, the execution state machine and run history all genuinely work.\n\nHighlights include a rule-based planner that parses plain-English descriptions into a configured workflow, a "rehearse last week" dry-run, budget caps that downgrade runs, clean mid-run cancellation, believable failure handling with partial charges, and unit tests with Vitest.',
+    content_tr:
+      'Bir video üretim ürünü için Otomasyonlar sayfası: bir hattı bir kez kurun (tetikleyici → üretim adımları → hedefler → zamanlama) ve kendi kendine çalışmasını, hata vermesini, atlamasını ve kredi harcamasını izleyin. Gerçekte hiçbir şey üretilmez ya da yayınlanmaz — ama durum, doğrulama, plan limitleri, kredi defteri, yürütme durum makinesi ve çalıştırma geçmişi gerçekten çalışır.\n\nÖne çıkanlar: düz İngilizce açıklamaları yapılandırılmış bir iş akışına çeviren kural tabanlı planlayıcı, "geçen haftayı prova et" kuru çalıştırması, çalıştırmaları küçülten bütçe limitleri, çalışma sırasında temiz iptal, kısmi ücretlendirmeyle gerçekçi hata yönetimi ve Vitest ile birim testleri.',
+    weight: 95,
+    featured: true,
+    repo: 'https://github.com/yenikosebatuhan/vivideo-automations',
+    demo: 'https://vivideo-automations.vercel.app',
+    monogram: 'VA',
+  },
+  {
     slug: 'hospital-management',
     title: 'Hospital Management System',
     title_tr: 'Hastane Yönetim Sistemi',
@@ -71,30 +111,48 @@ export const projects: ProjectItem[] = [
       'A full-stack hospital management platform with an admin panel covering patient records, appointments, staff management and hospital analytics. Built with Next.js and TypeScript for a type-safe front end and API layer, using Prisma ORM over SQLite for the data model and migrations. Designed for a one-command local setup so the whole system can be run and demoed without external services.',
     content_tr:
       'Hasta kayıtları, randevular, personel yönetimi ve hastane analizlerini kapsayan bir yönetim paneline sahip full-stack hastane yönetim platformu. Tip-güvenli bir ön yüz ve API katmanı için Next.js ve TypeScript ile, veri modeli ve migrasyonlar için SQLite üzerinde Prisma ORM kullanılarak geliştirildi. Tüm sistemin harici servisler olmadan çalıştırılıp gösterilebilmesi için tek komutla yerel kurulum sağlayacak şekilde tasarlandı.',
-    weight: 90,
-    featured: true,
+    weight: 85,
     repo: 'https://github.com/yenikosebatuhan/Hospital_Management_System',
     monogram: 'HM',
   },
   {
     slug: 'towers',
-    title: 'TOWERS — Strategy Board Game',
-    title_tr: 'TOWERS — Strateji Kutu Oyunu',
+    title: 'TOWERS — Published Strategy Game',
+    title_tr: 'TOWERS — Yayınlanmış Strateji Oyunu',
     period: '2025 – 2026',
     domains: ['mobile'],
-    stack: ['Flutter', 'Dart'],
+    stack: ['Flutter', 'Dart', 'Game AI'],
     summary:
-      'A release-ready cross-platform strategy board game with a custom 8×8 engine and dynamic tower-stacking mechanics.',
+      'An independently published cross-platform strategy game with a custom 8×8 engine, tower-stacking mechanics and AI-based move selection.',
     summary_tr:
-      'Özel bir 8×8 motoru ve dinamik kule-istifleme mekaniğine sahip, yayına hazır çapraz-platform strateji kutu oyunu.',
+      'Özel bir 8×8 motoru, kule-istifleme mekaniği ve AI tabanlı hamle seçimine sahip, bağımsız olarak yayınlanmış çapraz-platform strateji oyunu.',
     content:
-      'A cross-platform 2D strategy board game built with Flutter and Dart, prepared for Play Store release. It runs on a custom 8×8 game engine with dynamic tower-stacking mechanics, plus rule enforcement and move validation for deterministic, fair play. Beyond the gameplay I handled the production path: build optimization, asset compression and store configuration.',
+      'A cross-platform 2D strategy board game built with Flutter and Dart and published on Google Play. It runs on a custom 8×8 game engine with dynamic tower-stacking mechanics, rule enforcement and move validation, and an AI opponent that selects moves for single-player games. Beyond the gameplay I owned the production path as an independent product: build optimization, asset compression, store configuration and release.',
     content_tr:
-      'Flutter ve Dart ile geliştirilen, Play Store yayınına hazırlanan çapraz-platform 2D strateji kutu oyunu. Özel bir 8×8 oyun motoru üzerinde dinamik kule-istifleme mekaniğiyle çalışır; deterministik ve adil oyun için kural uygulama ve hamle doğrulama içerir. Oynanışın ötesinde üretim sürecini de yürüttüm: derleme optimizasyonu, varlık sıkıştırma ve mağaza yapılandırması.',
-    weight: 80,
+      'Flutter ve Dart ile geliştirilip Google Play’de yayınlanan çapraz-platform 2D strateji kutu oyunu. Özel bir 8×8 oyun motoru üzerinde dinamik kule-istifleme mekaniği, kural uygulama ve hamle doğrulama ile tek oyunculu modda hamle seçen bir AI rakip içerir. Oynanışın ötesinde bağımsız bir ürün olarak üretim sürecini de yürüttüm: derleme optimizasyonu, varlık sıkıştırma, mağaza yapılandırması ve yayın.',
+    weight: 90,
     featured: true,
     demo: 'https://play.google.com/store/apps/details?id=com.towers.game',
     monogram: 'TW',
+  },
+  {
+    slug: 'dungeon-kurawler',
+    title: 'Dungeon KUrawler — JavaFX Game (Team)',
+    title_tr: 'Dungeon KUrawler — JavaFX Oyunu (Takım)',
+    period: '2025',
+    domains: ['systems'],
+    stack: ['Java', 'JavaFX', 'MVC', 'JUnit 5'],
+    summary:
+      'A team-built JavaFX dungeon crawler with a layered MVC architecture, an Action–Effect pipeline, procedural maps and a visual level editor.',
+    summary_tr:
+      'Katmanlı MVC mimarisi, Action–Effect hattı, prosedürel haritalar ve görsel seviye editörüne sahip, takımca geliştirilmiş bir JavaFX zindan oyunu.',
+    content:
+      'A software-engineering course project (COMP 302) built by a team as a layered JavaFX application. Gameplay state changes flow through a decoupled Action–Effect pipeline, with clean Model–View separation and the Observer pattern for features like a shadow clone that mirrors the hero.\n\nIt includes procedurally generated dungeons, enemies with distinct behaviours (chasing knights, teleporting sorcerers with line-of-sight projectiles), a visual tile-based level editor, a 4v4 AI arena, JSON save/load, achievements, and JUnit 5 tests. UML package, sequence and communication diagrams document the design.',
+    content_tr:
+      'Bir yazılım mühendisliği dersi (COMP 302) için takım olarak katmanlı bir JavaFX uygulaması şeklinde geliştirilen proje. Oyun durumu değişiklikleri ayrık bir Action–Effect hattından geçer; temiz Model–View ayrımı ve kahramanı taklit eden gölge klon gibi özellikler için Observer deseni kullanılır.\n\nProsedürel olarak üretilen zindanlar, farklı davranışlara sahip düşmanlar (kovalayan şövalyeler, görüş hattıyla mermi atan ışınlanan büyücüler), görsel karo tabanlı seviye editörü, 4v4 AI arenası, JSON kaydet/yükle, başarımlar ve JUnit 5 testleri içerir. Tasarım UML paket, sıra ve iletişim diyagramlarıyla belgelenmiştir.',
+    weight: 75,
+    repo: 'https://github.com/yenikosebatuhan/Dungeon_KUrawler',
+    monogram: 'DK',
   },
   {
     slug: 'shell-ish',

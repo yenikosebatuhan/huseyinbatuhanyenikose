@@ -19,9 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hüseyin Batuhan Yeniköse — Backend & Software Engineer",
+  title: "Hüseyin Batuhan Yeniköse — Backend & Applied AI Engineer",
   description:
-    "Computer Engineering student focused on backend software engineering — Java / Spring Boot microservices, distributed systems, and test automation.",
+    "Computer Engineering student at Koç University building backend APIs and applied AI — FastAPI, Azure Document Intelligence, Java / Spring Boot microservices, and test automation.",
 };
 
 export default function RootLayout({

@@ -45,7 +45,7 @@ export default function ContactPage() {
       <div className="relative mx-auto max-w-3xl px-6 py-20 md:py-28 text-center">
         <div className="mono inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
-          {tr ? 'Yeni projeler için müsait' : 'Available for new projects'}
+          {tr ? 'Yeni fırsatlara açık' : 'Open to new opportunities'}
         </div>
 
         <h1 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight">
@@ -53,8 +53,8 @@ export default function ContactPage() {
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground leading-relaxed">
           {tr
-            ? 'Backend, full-stack ve test otomasyonu alanlarında staj, tam zamanlı pozisyon ve işbirliği fırsatlarına açığım. En hızlı ulaşım e-posta.'
-            : 'Open to internships, full-time roles, and collaborations in backend, full-stack, and test automation. Email is the fastest way to reach me.'}
+            ? 'Junior AI mühendisliği, uygulamalı AI ve backend geliştirme alanlarında pozisyon ve işbirliği fırsatlarına açığım. En hızlı ulaşım e-posta.'
+            : 'Open to junior AI engineering, applied AI, and backend development roles and collaborations. Email is the fastest way to reach me.'}
         </p>
 
         <a

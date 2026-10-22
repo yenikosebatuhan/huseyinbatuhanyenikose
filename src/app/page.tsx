@@ -14,6 +14,8 @@ import {
   Layers,
   ExternalLink,
   Smartphone,
+  BrainCircuit,
+  Briefcase,
 } from 'lucide-react';
 import { getLocaleFromPathname } from '@/lib/i18n';
 import { projects, localizedTitle, localizedSummary } from '@/data/projects';
@@ -21,9 +23,42 @@ import { ProjectCover } from '@/components/ProjectCover';
 import { asset } from '@/lib/asset';
 
 const TECH = [
-  'Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'Kubernetes', 'REST',
-  'JWT / RBAC', 'JPA / Hibernate', 'React', 'Next.js', 'TypeScript',
-  'Python', 'C', 'Git', 'CI/CD', 'Testcontainers',
+  'Python', 'FastAPI', 'Azure Document Intelligence', 'Redis RQ', 'Java',
+  'Spring Boot', 'PostgreSQL', 'Docker', 'Kubernetes', 'REST', 'JWT / RBAC',
+  'React', 'Next.js', 'TypeScript', 'Flutter', 'GitHub Actions', 'Testcontainers',
+];
+
+const EXPERIENCE = [
+  {
+    org: 'Siemens',
+    initials: 'SI',
+    role: 'Part-Time Student Engineer — Test Automation',
+    role_tr: 'Part-Time Öğrenci Mühendis — Test Otomasyonu',
+    period: 'Feb 2026 – Sep 2026',
+    period_tr: 'Şub 2026 – Eyl 2026',
+    desc: 'Automated test development for enterprise software with Java; functional & regression testing, API testing, Git, CI/CD and containerized environments.',
+    desc_tr: 'Kurumsal yazılım için Java ile otomatik test geliştirme; fonksiyonel ve regresyon testleri, API testi, Git, CI/CD ve konteyner ortamları.',
+  },
+  {
+    org: 'Tegsoft',
+    initials: 'TG',
+    role: 'QA Intern — Test Engineering',
+    role_tr: 'QA Stajyeri — Test Mühendisliği',
+    period: 'Jul 2025 – Oct 2025',
+    period_tr: 'Tem 2025 – Eki 2025',
+    desc: 'Manual, functional, regression and exploratory testing of web-based omnichannel software; cross-browser checks with BrowserStack.',
+    desc_tr: 'Web tabanlı omnichannel yazılımın manuel, fonksiyonel, regresyon ve keşifsel testleri; BrowserStack ile tarayıcılar arası kontroller.',
+  },
+  {
+    org: 'Koç University',
+    initials: 'KU',
+    role: 'KUAV Captain · KUAIRS Vice President',
+    role_tr: 'KUAV Kaptanı · KUAIRS Başkan Yardımcısı',
+    period: '2023 – 2025',
+    period_tr: '2023 – 2025',
+    desc: 'Led the Teknofest Combat UAV team, coordinated student technical initiatives and organized AI-focused workshops.',
+    desc_tr: 'Teknofest Savaş İHA takımına liderlik ettim, öğrenci teknik girişimlerini koordine ettim ve AI odaklı atölyeler düzenledim.',
+  },
 ];
 
 export default function HomePage() {
@@ -42,31 +77,38 @@ export default function HomePage() {
 
   const focus = [
     {
+      icon: BrainCircuit,
+      title: tr ? 'Uygulamalı AI' : 'Applied AI',
+      desc: tr
+        ? 'Azure Document Intelligence ve kural tabanlı çıkarımla belge işleme hatları; AI’ı gerçek ürünlere bağlayan backend’ler.'
+        : 'Document-processing pipelines with Azure Document Intelligence and rule-based extraction; backends that put AI into real products.',
+    },
+    {
       icon: Server,
       title: tr ? 'Backend & Dağıtık Sistemler' : 'Backend & Distributed Systems',
       desc: tr
-        ? 'Spring Boot mikroservisleri, REST API’ler, JWT/RBAC güvenliği, idempotency ve ondalık-güvenli faturalama.'
-        : 'Spring Boot microservices, REST APIs, JWT/RBAC security, idempotency, and decimal-safe billing.',
+        ? 'FastAPI ve Spring Boot servisleri, kuyruklu arka plan işleri, JWT/RBAC güvenliği, idempotency ve ondalık-güvenli faturalama.'
+        : 'FastAPI and Spring Boot services, queued background jobs, JWT/RBAC security, idempotency, and decimal-safe billing.',
     },
     {
       icon: TestTube2,
       title: tr ? 'Test Otomasyonu & QA' : 'Test Automation & QA',
       desc: tr
-        ? 'Kurumsal uygulamalar için otomatik test çerçeveleri, CI/CD entegrasyonu ve regresyon testi.'
-        : 'Automated test frameworks for enterprise apps, CI/CD integration, and regression testing.',
+        ? 'Siemens ve Tegsoft’ta kurumsal yazılım için otomatik, fonksiyonel ve regresyon testleri; API testi ve CI/CD.'
+        : 'Automated, functional and regression testing for enterprise software at Siemens and Tegsoft; API testing and CI/CD.',
     },
     {
       icon: Layers,
-      title: tr ? 'Full-Stack & Ürün' : 'Full-Stack & Product',
+      title: tr ? 'Full-Stack & Mobil' : 'Full-Stack & Mobile',
       desc: tr
-        ? 'Next.js / TypeScript ile uçtan uca ürünler, temiz mimari ve tek komutla çalışan kurulumlar.'
-        : 'End-to-end products with Next.js / TypeScript, clean architecture, and one-command setups.',
+        ? 'React / Next.js ile uçtan uca ürünler ve Google Play’de yayınlanmış bir Flutter oyunu.'
+        : 'End-to-end products with React / Next.js, and a Flutter game published on Google Play.',
     },
   ];
 
   const stats = [
-    { value: '3+', label: tr ? 'Yıl Deneyim' : 'Years Experience' },
-    { value: '8+', label: tr ? 'Proje' : 'Projects Shipped' },
+    { value: '2', label: tr ? 'Sektör Deneyimi' : 'Industry Roles' },
+    { value: '10+', label: tr ? 'Proje' : 'Projects Built' },
     { value: '2', label: tr ? 'Patent' : 'Patents' },
     { value: '3.', label: tr ? 'TÜBİTAK (Ulusal)' : 'TÜBİTAK (National)' },
   ];
@@ -93,14 +135,14 @@ export default function HomePage() {
                 <span className="text-gradient">Batuhan</span>.
                 <br />
                 <span className="text-muted-foreground font-semibold">
-                  {tr ? 'Backend odaklı yazılım mühendisi.' : 'I build reliable backends.'}
+                  {tr ? 'Backend ve uygulamalı AI geliştiriyorum.' : 'I build backends and applied AI.'}
                 </span>
               </h1>
 
               <p className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed">
                 {tr
-                  ? 'Koç Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. Java / Spring Boot mikroservisleri, dağıtık sistemler ve test otomasyonu üzerine çalışıyorum. Şu anda Siemens’te test otomasyonu alanında part-time mühendisim.'
-                  : 'Computer Engineering student at Koç University, focused on Java / Spring Boot microservices, distributed systems, and test automation. Currently a part-time engineer in test automation at Siemens.'}
+                  ? 'Koç Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. FastAPI ve Azure Document Intelligence ile AI destekli bir belge işleme MVP’si, Java / Spring Boot mikroservisleri geliştirdim ve bir Flutter oyunu yayınladım. Siemens ve Tegsoft’ta test mühendisliği deneyimim var; junior AI mühendisliği ve backend fırsatları arıyorum.'
+                  : 'Computer Engineering student at Koç University. I’ve built an AI-assisted document-processing MVP with FastAPI and Azure Document Intelligence, Java / Spring Boot microservices, and a published Flutter game — with test-engineering experience at Siemens and Tegsoft. Looking for junior AI engineering and backend roles.'}
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -183,7 +225,7 @@ export default function HomePage() {
               : 'I focus on building reliable, well-tested systems.'
           }
         />
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {focus.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
@@ -217,7 +259,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {featured.map((p) => (
               <article
                 key={p.slug}
@@ -260,15 +302,19 @@ export default function HomePage() {
                         {tr ? 'Kod' : 'Code'}
                       </a>
                     )}
-                    {!p.repo && p.demo && p.demo.includes('play.google.com') && (
+                    {p.demo && (
                       <a
                         href={p.demo}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
                       >
-                        <Smartphone className="h-4 w-4" />
-                        {tr ? 'Play Store' : 'Play Store'}
+                        {p.demo.includes('play.google.com') ? (
+                          <Smartphone className="h-4 w-4" />
+                        ) : (
+                          <ExternalLink className="h-4 w-4" />
+                        )}
+                        {p.demo.includes('play.google.com') ? 'Play Store' : tr ? 'Canlı' : 'Live'}
                       </a>
                     )}
                   </div>
@@ -279,8 +325,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ───────────────── Stats ───────────────── */}
+      {/* ───────────────── Experience ───────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+        <SectionHeading
+          index="03"
+          title={tr ? 'Deneyim' : 'Experience'}
+          subtitle={tr ? 'Sektörde ve kampüste.' : 'In industry and on campus.'}
+        />
+        <ol className="mt-12 relative border-l border-border ml-5">
+          {EXPERIENCE.map((e) => (
+            <li key={e.org + e.role} className="relative pl-10 pb-10 last:pb-0">
+              <span className="mono absolute -left-5 top-0 grid h-10 w-10 place-items-center rounded-xl border border-border bg-card text-xs font-bold">
+                {e.initials}
+              </span>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                <h3 className="font-semibold">
+                  {tr ? e.role_tr : e.role}
+                  <span className="text-muted-foreground font-normal"> · {e.org}</span>
+                </h3>
+                <span className="mono shrink-0 text-xs text-muted-foreground">
+                  {tr ? e.period_tr : e.period}
+                </span>
+              </div>
+              <p className="mt-2 max-w-3xl text-sm text-muted-foreground leading-relaxed">
+                {tr ? e.desc_tr : e.desc}
+              </p>
+            </li>
+          ))}
+        </ol>
+        <Link
+          href="/about"
+          className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <Briefcase className="h-4 w-4" />
+          {tr ? 'Tam geçmiş' : 'Full background'}
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </section>
+
+      {/* ───────────────── Stats ───────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-20 md:pb-24">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((s) => (
             <div
@@ -311,8 +395,8 @@ export default function HomePage() {
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-white/85">
               {tr
-                ? 'Backend, full-stack ve test otomasyonu fırsatlarına açığım.'
-                : 'Open to backend, full-stack, and test-automation opportunities.'}
+                ? 'Junior AI mühendisliği, uygulamalı AI ve backend geliştirme fırsatlarına açığım.'
+                : 'Open to junior AI engineering, applied AI, and backend development roles.'}
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <Link
